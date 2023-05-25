@@ -9,7 +9,7 @@ import Todo from '../Todo/Todo';
 export default function TodoList() {
   const [todos, setTodos] = useState([
     {id: '123', text: "Go to Gym", status: "active"},
-    {id: '124', text: "Go to Office", status: "active"},
+    {id: '124', text: "Go to Office", status: "completed"},
   ]);
 
   //새로운 (입력받은)todo 를 todos에 업데이트해야 함
