@@ -1,31 +1,29 @@
 import React, { useState } from 'react'
-import '../../App.css';
+// import '../../App.css';
+import AddTodo from '../AddTodo/AddTodo';
+
+// TodoList.jsx: Mother
+//AddTodo.jsx: Child
 
 export default function TodoList() {
-  const [name, setName] = useState('');
-  const [todo, setTodo] = useState([
-    // {id: 123, text: "Go to Gym", status: "Active"},
-    // {id: 124, text: "Go to Office", status: "Active"}
+  const [todos, setTodos] = useState([
+    {id: '123', text: "Go to Gym", status: "active"},
+    {id: '124', text: "Go to Office", status: "active"},
   ]);
-  let nextId=0;
 
+  //새로운 (입력받은)todo 를 todos에 업데이트해야 함
+  //console.log(todo);
+  //setTodo([...todos, todo]);
+  const handleAdd = (todo) => setTodos([...todos, todo]);
+  
   return (
     <section>
       <ul>
-        {todo.map((item)=>{
-          return <li key={item.id}>{item.text}</li>
-        })}
+        {todos.map((item)=> (
+          <li key={item.id}>{item.text}</li>
+        ))}
       </ul>
-      <input value={name} onChange={e => setName(e.target.value)} />
-      <button onClick={()=>{
-        setTodo([
-          ...todo,
-          {
-            id: nextId,
-            text: name 
-          }
-        ]);
-      }}>Add</button>
+      <AddTodo onAdd={handleAdd} />
     </section>
   );
 }
