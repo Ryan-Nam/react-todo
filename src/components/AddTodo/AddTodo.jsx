@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 // import '../../App.css';
 import { v4 as uuidv4} from 'uuid'
 
+//props는 객체이므로 구조 분해(destrucuring) 방식을 이용해 데이터를 받는 변수를 중괄호({})로 감싸주었습니다
 export default function AddTodo({ onAdd }) {
   const [string, setString] = useState('');
 
@@ -16,7 +17,6 @@ export default function AddTodo({ onAdd }) {
     onAdd({id:uuidv4(), text: string, status:'active'});
     // onAdd({id:'uniqueId', string:string, status:'Active'});
     setString('');
-    
   };
 
   return (
@@ -29,6 +29,5 @@ export default function AddTodo({ onAdd }) {
         onChange={handleChange} /> 
       <button>Add</button>
     </form>
-
   );
 }
