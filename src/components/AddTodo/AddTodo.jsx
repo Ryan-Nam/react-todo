@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
+import styles from './AddTodo.module.css'
 
 export default function AddTodo({onAdd}) {
   //props는 객체이므로 구조 분해(destrucuring) 방식을 이용해 데이터를 받는 변수를 중괄호({})로 감싸주었습니다
@@ -28,14 +29,15 @@ export default function AddTodo({onAdd}) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
+        className={styles.input}
           type='text'
           placeholder='Add smt here'
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type='submit'>Add</button>
+        <button className={styles.button} type='submit'>Add</button>
         
       </form>
     </>

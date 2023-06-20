@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
+import styles from './TodoList.module.css'
 
 export default function TodoList({ currentFilter }) {
   const [todos, setTodos] = useState([
@@ -24,8 +25,8 @@ export default function TodoList({ currentFilter }) {
   const filtered = getFilteredItems(todos, currentFilter);
 
   return (
-    <section>
-      <ul>
+    <section className={styles.container}>
+      <ul className={styles.list}>
         {filtered.map((item) => (
           // <li key={item.id}>{item.text}</li>
           //children을 보내주는게 아니라, todo 자체를 보내줄 것임
