@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
-import styles from './TodoList.module.css'
+import styles from './TodoList.module.css';
 
 export default function TodoList({ currentFilter }) {
-  const [todos, setTodos] = useState([
-    { id: '123', text: 'Go to Gym', status: 'active' },
-    { id: '124', text: 'Go to Office', status: 'completed' },
-  ]);
+  const [todos, setTodos] = useState(() => readTodosFromLocalStorage());
 
   //새로운 (입력받은)todo 를 todos에 업데이트해야 함
   //console.log(todo);
@@ -21,6 +18,14 @@ export default function TodoList({ currentFilter }) {
   // t의 id가 삭제하고자하는 item의 id가 아닌 경우에만 필터링
   const handleDelte = (deleted) =>
     setTodos(todos.filter((t) => t.id !== deleted.id));
+
+  //so, whenever, todos is changed, we will store its data
+  // 1.change todos to JSON file and
+  // 2. save as todos(key)
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const filtered = getFilteredItems(todos, currentFilter);
 
@@ -41,6 +46,13 @@ export default function TodoList({ currentFilter }) {
       <AddTodo onAdd={handleAdd} />
     </section>
   );
+}
+
+//if there is todos, parse(chagne) as JSON, if not, return []
+function readTodosFromLocalStorage() {
+  console.log('readTodosFromLocalStorage');
+  const todos = localStorage.getItem('todos');
+  return todos ? JSON.parse(todos) : [];
 }
 
 function getFilteredItems(todos, filter) {

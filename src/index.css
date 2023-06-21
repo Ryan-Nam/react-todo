@@ -3,9 +3,23 @@
   --color-bg: #fdfffd;
   --color-grey: #d1d1d1;
   --color-text: #22243b;
-  --color-accent: #F78e1e;
+  --color-accent: #f78e1e;
   --color-white: #ffff;
   --color-scrollbar: #aaa7a7;
+}
+
+html.dark {
+  --color-bg-dark: #1a1c35;
+  --color-bg: #22243b;
+  --color-grey: #4e4e4e;
+  --color-text: #fdfffd;
+  background: rgb(40, 42, 45);
+  background: linear-gradient(
+    111deg,
+    rgba(40, 42, 45, 1) 10%,
+    rgba(46, 152, 196, 1) 50%,
+    rgba(40, 42, 45, 1) 90%
+  );
 }
 
 body {
@@ -23,11 +37,12 @@ body {
   font-size: 1.2rem;
   accent-color: var(--color-accent);
   background: rgb(2, 0, 36);
-  background: rgb(109, 213, 237);
+  background: rgb(207, 250, 255);
   background: linear-gradient(
-    104deg,
-    rgba(109, 213, 237, 1) 0%,
-    rgba(33, 147, 176, 1) 100%
+    111deg,
+    rgba(207, 250, 255, 1) 10%,
+    rgba(249, 217, 231, 1) 50%,
+    rgba(205, 228, 255, 1) 90%
   );
 }
 
@@ -40,9 +55,9 @@ body {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 18px 20px 19px -4px rgba(0,0,0,0.84);
--webkit-box-shadow: 18px 20px 19px -4px rgba(0,0,0,0.84);
--moz-box-shadow: 18px 20px 19px -4px rgba(0,0,0,0.84);
+  box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.85);
+  -webkit-box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.85);
+  -moz-box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.85);
 }
 
 code {
@@ -50,7 +65,7 @@ code {
     monospace;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
